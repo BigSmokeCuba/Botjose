@@ -208,7 +208,20 @@ def save(filename, size):
     zip.close()
     mult_file.close()
 
+def sendTxt(name,files,update,bot):
+                txt = open(name,'w')
+                fi = 0
+                for f in files:
+                    separator = ''
+                    if fi < len(files)-1:
+                        separator += '\n'
+                    txt.write(f['directurl']+separator)
+                    fi += 1
+                txt.close()
+                bot.sendFile(update.message.chat.id,name)
+                os.unlink(name)
 
+                
 async def upload_to_moodle_url(msg, bot, ev, url):
     await msg.edit('⚙️Analizando...')
     html = BeautifulSoup(url, "html.parser")
