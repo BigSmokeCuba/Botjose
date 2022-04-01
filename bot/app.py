@@ -454,7 +454,7 @@ async def process(ev: events.NewMessage.Event):
                 List = moodle.getEvidences()
                 List1 = List[:45]
                 total = len(List)
-                List2 = List[46:]
+
                 info1 = f'<b>Archivos Totales: {str(total)}</b>\nBorrado: /del_all'
                 info = f'<b>Archivos Totales: {str(total)}</b>\nBorrado: /del_all'
                 i = 1
@@ -468,18 +468,9 @@ async def process(ev: events.NewMessage.Event):
                     info += '\n'
                     i += 1
                     await message.edit(f'{info}', parse_mode="html")
-                if len(List2) > 0:
-                    message1 = await bot.send_message(ev.chat_id, 'Conectando...')
-                    for item in List2:
 
-                        info1 += '<b>/del_'+str(i)+'</b> 📦 '
-                        #info1 += '<b>'+item['name']+':</b>\n'
-                        for file in item['files']:
-                            info1 += '<a href="' + \
-                                file['url']+'">\t'+file['name']+'</a>\n'
-                        info1 += '\n'
-                        i += 1
-                        await message1.edit(f'{info1}', parse_mode="html")
+
+
             else:
                 await message.edit('❗️Acceso Denegado❗️')
         else:
