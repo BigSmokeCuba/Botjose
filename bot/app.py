@@ -141,7 +141,9 @@ async def process_file(file, bot, ev, msg):
         else:
             await upload_to_moodle(file, msg)
             os.unlink(file)
-
+        if len(files)>0:
+            txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
+            sendTxt(txtname,files,update,bot)
     except Exception as e:
         await msg.edit('(Error Subida) - ' + str(e))
 
