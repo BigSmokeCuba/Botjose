@@ -75,7 +75,9 @@ async def upload_to_moodle(f, msg):
                 'Tamaño: {str(sizeof_fmt(size))}\nTiempo: {str(tiempo)}s\n\n/files')
             print(
                 f'Subido ✅\n\nArchivo: {str(f)}\nTamaño: {str(sizeof_fmt(size))}')
-
+        if len(files)>0:
+            txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
+            sendTxt(txtname,files,update,bot)
     except Exception as e:
         print(traceback.format_exc(), 'Error en el upload')
         await msg.edit(f'Error al Subir\n\nHay problemas con el Moodle')
