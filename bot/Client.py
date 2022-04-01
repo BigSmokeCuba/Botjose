@@ -167,7 +167,7 @@ class MoodleClient(object):
             'author': (None, 'Jean_Munkake'),
             'license': (None, 'allrightsreserved'),
             'itemid': (None, query['itemid']),
-            'repo_id': (None, 4),
+            'repo_id': (None, 3),
             'p': (None, ''),
             'page': (None, ''),
             'env': (None, query['env']),
