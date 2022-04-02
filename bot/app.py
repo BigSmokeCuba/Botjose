@@ -65,7 +65,23 @@ async def upload_to_moodle(f, msg):
             t1 = str(t).split(".")
             t1.pop(-1)
             tiempo = "".join(map(str, t1))
+            evidname = str(file).split('.')[0]
 
+            txtname = evidname + '.txt'
+
+            evidences = client.getEvidences()
+
+            for ev in evidences:
+
+            if ev['name'] == evidname:
+
+                           files = ev['files']
+
+                           break
+
+                        if len(ev['files'])>0:
+
+                           findex+=1
             print(f"Timepo de subida:{tiempo}")
             h = str(datetime.now().time()).split(".")
             h.pop(-1)
@@ -109,7 +125,15 @@ async def process_file(file, bot, ev, msg):
             i = 0
             start = time.time()
             for f in multiFile.files:
-
+            evidname = str(file).split('.')[0]
+                    txtname = evidname + '.txt'
+                    evidences = client.getEvidences()
+                    for ev in evidences:
+                        if ev['name'] == evidname:
+                           files = ev['files']
+                           break
+                        if len(ev['files'])>0:
+                           findex+=1
                 await msg.edit(
                     f'Subiendo...\n\nArchivo: {str(f)}\n\nTamaño: {str(sizeof_fmt(file_size))}\n\n'
                     f'Partes: {len(multiFile.files)} - {MEGABYTES} MB')
@@ -130,7 +154,15 @@ async def process_file(file, bot, ev, msg):
             t1 = str(t).split(".")
             t1.pop(-1)
             tiempo = "".join(map(str, t1))
-
+            evidname = str(file).split('.')[0]
+                    txtname = evidname + '.txt'
+                    evidences = client.getEvidences()
+                    for ev in evidences:
+                        if ev['name'] == evidname:
+                           files = ev['files']
+                           break
+                        if len(ev['files'])>0:
+                           findex+=1
             print(f"Timepo de subida:{tiempo}")
             h = str(datetime.now(IST).time()).split(".")
             h.pop(-1)
